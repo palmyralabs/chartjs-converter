@@ -100,10 +100,6 @@ export function mergeDeep(target, ...sources) {
     return mergeDeep(target, ...sources);
 }
 
-
-export { getLabel, getLabels, getKeys, getAccessor, generateAccessors }
-
-
 const getValueByKey = (fieldName: string, data: any): any => {
     if (data === undefined || data == null) {
         return undefined;
@@ -123,3 +119,6 @@ const getValueByKey = (fieldName: string, data: any): any => {
 const hasDot = (val: string): boolean => {
     return val.indexOf('.') >= 1
 };
+
+
+export { getLabel, getLabels, getKeys, getAccessor, generateAccessors, getAccessors, getValueByKey }

@@ -7,6 +7,7 @@ interface keys {
 }
 declare function getKeys(options: ConverterOptions): keys;
 declare function generateAccessors(options: ConverterOptions): keys;
+declare function getAccessors(vs: AttributeAccessor[]): KeyedAccessor<any>[];
 declare function getAccessor(v: AttributeAccessor): KeyedAccessor<any>;
 declare function getLabels(options: ConverterOptions): {
     xLabel: any;
@@ -15,4 +16,5 @@ declare function getLabels(options: ConverterOptions): {
 declare const getLabel: (yLabels: any, key: string, index: number) => any;
 export declare function isObject(item: any): boolean;
 export declare function mergeDeep(target: any, ...sources: any[]): any;
-export { getLabel, getLabels, getKeys, getAccessor, generateAccessors };
+declare const getValueByKey: (fieldName: string, data: any) => any;
+export { getLabel, getLabels, getKeys, getAccessor, generateAccessors, getAccessors, getValueByKey };

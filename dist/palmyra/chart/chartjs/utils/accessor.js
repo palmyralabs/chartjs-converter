@@ -61,9 +61,11 @@ const K = (e, c) => {
 export {
   x as generateAccessors,
   a as getAccessor,
+  t as getAccessors,
   l as getKeys,
   g as getLabel,
   A as getLabels,
+  K as getValueByKey,
   f as isObject,
   s as mergeDeep
 };
