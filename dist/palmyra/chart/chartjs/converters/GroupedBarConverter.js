@@ -1,8 +1,8 @@
-import { GroupArrayScaleConverter as r, GroupObjectScaleConverter as o } from "./base/GroupArrayScaleConverter.js";
+import { GroupObjectScaleConverter as r, GroupArrayScaleConverter as o } from "./base/GroupArrayScaleConverter.js";
 import { NoopConverter as e } from "./base/NoopScaleConverter.js";
 const a = {
-  Array: r,
-  Object: o,
+  Array: o,
+  Object: r,
   noop: e
 };
 export {

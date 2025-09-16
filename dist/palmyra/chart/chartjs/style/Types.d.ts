@@ -1,7 +1,6 @@
 import { ChartType, CommonElementOptions, CommonHoverOptions } from 'chart.js';
 import { ConverterOptions } from '../../Types';
 import { ChartJsData } from '../Types';
-
 export type DeepPartial<T> = T extends Function ? T : T extends Array<infer U> ? _DeepPartialArray<U> : T extends object ? _DeepPartialObject<T> : T | undefined;
 type _DeepPartialArray<T> = Array<DeepPartial<T>>;
 type _DeepPartialObject<T> = {

@@ -1,34 +1,33 @@
 import r from "./converters/LineConverter.js";
-import i from "./converters/BarConverter.js";
-import m from "./converters/GroupedBarConverter.js";
-import v from "./converters/ScatterConverter.js";
-import p from "./converters/GroupedScatterConverter.js";
-import f from "./converters/BubbleConverter.js";
-import s from "./converters/RadarConverter.js";
-import u from "./converters/PolarConverter.js";
-import $ from "./converters/PieConverter.js";
-import d from "./converters/DoughnutConverter.js";
-import { NoopConverter as l } from "./converters/base/NoopScaleConverter.js";
-const B = {
+import c from "./converters/BarConverter.js";
+import n from "./converters/GroupedBarConverter.js";
+import i from "./converters/ScatterConverter.js";
+import v from "./converters/GroupedScatterConverter.js";
+import p from "./converters/BubbleConverter.js";
+import f from "./converters/RadarConverter.js";
+import s from "./converters/PolarConverter.js";
+import u from "./converters/PieConverter.js";
+import $ from "./converters/DoughnutConverter.js";
+import { NoopConverter as d } from "./converters/base/NoopScaleConverter.js";
+const l = {
   Line: r,
   MultiLine: r,
   AreaChart: r,
-  Bar: i,
-  StackedBar: m,
-  GroupedBar: m,
-  Scatter: v,
-  GroupedScatter: p,
-  Bubble: f,
-  Radar: s,
-  PolarArea: u,
-  Pie: $,
-  Doughnut: d
+  Bar: c,
+  StackedBar: n,
+  GroupedBar: n,
+  Scatter: i,
+  GroupedScatter: v,
+  Bubble: p,
+  Radar: f,
+  PolarArea: s,
+  Pie: u,
+  Doughnut: $
 };
-function k(o, a, c) {
-  var n;
-  var e = c || "Array", t = (n = B[o]) == null ? void 0 : n[e];
-  return t ? t(a) : (console.info("Data Converter not found " + o + ":" + e), l);
+function h(o, m, a) {
+  var e = a || "Array", t = l[o]?.[e];
+  return t ? t(m) : (console.info("Data Converter not found " + o + ":" + e), d);
 }
 export {
-  k as getDataConverter
+  h as getDataConverter
 };

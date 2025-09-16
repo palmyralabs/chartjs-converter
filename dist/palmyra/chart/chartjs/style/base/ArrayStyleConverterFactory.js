@@ -1,37 +1,36 @@
 import { generateColor as u } from "../GenerateColors.js";
-import { getStyle as v, extractOptions as g, extractNamedOptions as S } from "../util.js";
-const C = (m, h) => {
-  function l(r, i, o) {
-    const c = o.length, s = g(o);
-    s.map((t) => {
-      r[t] = [];
-    }), r.data && r.data.map((t, a) => {
-      const n = a % c, e = o[n];
-      s.map((f) => {
-        r[f].push(e == null ? void 0 : e[f]);
+import { getStyle as y, extractOptions as v, extractNamedOptions as g } from "../util.js";
+const C = (f, S) => {
+  function m(t, l, r) {
+    const o = r.length, s = v(r);
+    s.map((e) => {
+      t[e] = [];
+    }), t.data && t.data.map((e, a) => {
+      const c = a % o, n = r[c];
+      s.map((i) => {
+        t[i].push(n?.[i]);
       });
     });
   }
-  function p(r, i, o) {
-    const c = S(o);
-    c.map((s) => {
-      r[s] = [];
-    }), r.data && r.data.map((s, t) => {
-      const a = i.labels[t], n = o[a];
-      c.map((e) => {
-        (n == null ? void 0 : n[e]) != null ? r[e][t] = n == null ? void 0 : n[e] : e.includes("Color") && (r[e][t] = u());
+  function p(t, l, r) {
+    const o = g(r);
+    o.map((s) => {
+      t[s] = [];
+    }), t.data && t.data.map((s, e) => {
+      const a = l.labels[e], c = r[a];
+      o.map((n) => {
+        c?.[n] != null ? t[n][e] = c?.[n] : n.includes("Color") && (t[n][e] = u());
       });
     });
   }
-  return (r, i) => {
-    if (m == null || r == null || r == null)
-      return r;
-    if (r)
-      return r.datasets && r.datasets.map((o, c) => {
-        var a;
-        const t = v(m, c, (a = r.labels) == null ? void 0 : a[c]).style;
-        t instanceof Array ? l(o, r, t) : p(o, r, t);
-      }), r;
+  return (t, l) => {
+    if (f == null || t == null || t == null)
+      return t;
+    if (t)
+      return t.datasets && t.datasets.map((r, o) => {
+        const e = y(f, o, t.labels?.[o]).style;
+        e instanceof Array ? m(r, t, e) : p(r, t, e);
+      }), t;
   };
 };
 export {

@@ -345,7 +345,7 @@ function R(e, t) {
   return r ? W(e, r) : V(isNaN(e) ? t : e);
 }
 function X(e) {
-  return function t(r) {
+  return (function t(r) {
     r = +r;
     function i(n, a) {
       var s = e((n = o(n)).h, (a = o(a)).h), x = R(n.s, a.s), l = R(n.l, a.l), Z = R(n.opacity, a.opacity);
@@ -354,7 +354,7 @@ function X(e) {
       };
     }
     return i.gamma = t, i;
-  }(1);
+  })(1);
 }
 X(be);
 var Y = X(R);

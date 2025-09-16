@@ -1,5 +1,4 @@
 import { accessor, AttributeAccessor, ConverterOptions, KeyedAccessor } from '../../Types';
-
 interface keys {
     xKey: KeyedAccessor<any>;
     yKeys: KeyedAccessor<any>[];

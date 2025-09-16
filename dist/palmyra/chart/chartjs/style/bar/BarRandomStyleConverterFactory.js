@@ -1,10 +1,7 @@
-import l from "../GenerateColors.js";
-const u = (n) => (r, t) => {
-  var o;
-  return r == null || r == null || (o = r.datasets) == null || o.map((e) => {
-    e.backgroundColor = l(r.labels.length), e.borderColor = l(r.labels.length);
-  }), r;
-};
+import e from "../GenerateColors.js";
+const s = (l) => (r, n) => (r == null || r == null || r.datasets?.map((o) => {
+  o.backgroundColor = e(r.labels.length), o.borderColor = e(r.labels.length);
+}), r);
 export {
-  u as BarRandomStyleConverterFactory
+  s as BarRandomStyleConverterFactory
 };

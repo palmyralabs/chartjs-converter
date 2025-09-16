@@ -1,71 +1,71 @@
-import { NoopConverter as d } from "./base/NoopScaleConverter.js";
-import K, { getRandomNumber as g } from "../utils/GenerateColors.js";
-function h(r, t, e) {
-  var a = Math.round(g(2, 10)), l = K(a);
-  e.backgroundColor = l[0], e.borderColor = l[a - 1];
+import { NoopConverter as m } from "./base/NoopScaleConverter.js";
+import x, { getRandomNumber as d } from "../utils/GenerateColors.js";
+function K(a, t, e) {
+  var r = Math.round(d(2, 10)), n = x(r);
+  e.backgroundColor = n[0], e.borderColor = n[r - 1];
 }
-function m(r, t, e) {
-  var a = r[t];
-  return a || (a = {
+function v(a, t, e) {
+  var r = a[t];
+  return r || (r = {
     key: t,
     label: t,
     data: []
-  }, h(e, t, a), r[t] = a, a);
+  }, K(e, t, r), a[t] = r, r);
 }
-function x(r) {
-  const t = (r == null ? void 0 : r.xLabel) || "name", e = (r == null ? void 0 : r.xKey) || "x", a = (r == null ? void 0 : r.yKey) || "y", l = (r == null ? void 0 : r.rKey) || "r";
-  return a instanceof Array && console.error("BubbleChart: yKey should be string only, not an array " + r.yKey), {
+function f(a) {
+  const t = a?.xLabel || "name", e = a?.xKey || "x", r = a?.yKey || "y", n = a?.rKey || "r";
+  return r instanceof Array && console.error("BubbleChart: yKey should be string only, not an array " + a.yKey), {
     x: e,
-    y: a,
-    r: l,
+    y: r,
+    r: n,
     label: t
   };
 }
-const C = (r) => {
-  const { x: t, y: e, r: a, label: l } = x(r);
-  return (y) => {
-    var u = {
+const c = (a) => {
+  const { x: t, y: e, r, label: n } = f(a);
+  return (s) => {
+    var l = {
       labels: [],
       datasets: []
     };
-    if (y == null)
-      return u;
-    var b = {};
-    return y.map((n, v) => {
-      var f = m(b, n[l], r);
-      f.data.push({
-        x: n[t],
-        y: n[e],
-        r: n[a]
+    if (s == null)
+      return l;
+    var u = {};
+    return s.map((o, y) => {
+      var b = v(u, o[n], a);
+      b.data.push({
+        x: o[t],
+        y: o[e],
+        r: o[r]
       });
-    }), Object.values(b).map((n) => {
-      u.datasets.push(n);
-    }), u;
+    }), Object.values(u).map((o) => {
+      l.datasets.push(o);
+    }), l;
   };
-}, j = (r) => {
-  const { x: t, y: e, r: a } = x(r);
-  return (l) => {
-    var y = {
+}, g = (a) => {
+  const { x: t, y: e, r } = f(a);
+  return (n) => {
+    var s = {
       labels: [],
       datasets: []
-    }, u = {};
-    for (var b in l) {
-      var n = m(u, b, r), v = l[b];
-      n.data.push({
-        x: v[t],
-        y: v[e],
-        r: v[a]
+    }, l = {};
+    for (var u in n) {
+      var o = v(l, u, a), y = n[u];
+      o.data.push({
+        x: y[t],
+        y: y[e],
+        r: y[r]
       });
     }
-    return Object.values(u).map((f) => {
-      y.datasets.push(f);
-    }), y;
+    return Object.values(l).map((b) => {
+      s.datasets.push(b);
+    }), s;
   };
-}, M = {
-  Array: C,
-  Object: j,
-  noop: d
+}, p = {
+  Array: c,
+  Object: g,
+  noop: m
 };
 export {
-  M as default
+  p as default
 };

@@ -1,6 +1,5 @@
 import { ChartData, ChartDataset, ChartType, DefaultDataPoint } from 'chart.js';
 import { ConverterOptions } from '../Types';
-
 interface ChartJsData<TType extends ChartType = ChartType, TData = DefaultDataPoint<TType> & {
     key?: any;
 }, TLabel = string> extends ChartData<TType, TData, TLabel> {

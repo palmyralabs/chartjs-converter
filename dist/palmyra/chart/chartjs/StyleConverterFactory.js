@@ -1,29 +1,29 @@
 import o from "./style/LineStyleConverter.js";
-import i from "./style/bar/BarStyleConverter.js";
-import a from "./style/GroupedBarConverter.js";
-import v from "./style/ScatterConverter.js";
-import p from "./style/GroupedScatterConverter.js";
-import s from "./style/BubbleStyleConverter.js";
-import u from "./style/RadarConverter.js";
-import y from "./style/PolarConverter.js";
-import c from "./style/PieStyleConverter.js";
-import { NoopStyleConverterFactory as d } from "./style/base/RandomStyleConverterFactory.js";
-var $ = {
+import f from "./style/bar/BarStyleConverter.js";
+import n from "./style/GroupedBarConverter.js";
+import i from "./style/ScatterConverter.js";
+import v from "./style/GroupedScatterConverter.js";
+import p from "./style/BubbleStyleConverter.js";
+import s from "./style/RadarConverter.js";
+import u from "./style/PolarConverter.js";
+import a from "./style/PieStyleConverter.js";
+import { NoopStyleConverterFactory as y } from "./style/base/RandomStyleConverterFactory.js";
+var d = {
   Line: o,
   MultiLine: o,
   AreaChart: o,
-  Bar: i,
-  StackedBar: a,
-  Scatter: v,
-  GroupedScatter: p,
-  Bubble: s,
-  Radar: u,
-  PolarArea: y,
-  Pie: c,
-  Doughnut: c,
-  GroupedBar: a
+  Bar: f,
+  StackedBar: n,
+  Scatter: i,
+  GroupedScatter: v,
+  Bubble: p,
+  Radar: s,
+  PolarArea: u,
+  Pie: a,
+  Doughnut: a,
+  GroupedBar: n
 };
-const l = (r) => {
+const $ = (r) => {
   if (!r)
     return "Random";
   if (r instanceof Array) {
@@ -32,12 +32,11 @@ const l = (r) => {
   } else if (Object.keys(r).length > 0)
     return "Named";
   return "Noop";
-}, L = (r, e, t) => {
-  var n;
-  const m = l(e);
-  var f = ((n = $[r]) == null ? void 0 : n[m]) || d;
-  return f(e, t);
+}, N = (r, e, t) => {
+  const c = $(e);
+  var m = d[r]?.[c] || y;
+  return m(e, t);
 };
 export {
-  L as getStyleConverter
+  N as getStyleConverter
 };

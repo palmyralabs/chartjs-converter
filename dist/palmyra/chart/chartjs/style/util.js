@@ -1,33 +1,33 @@
-import t from "./GenerateColors.js";
-const a = (o, r) => {
-  o.backgroundColor = (r == null ? void 0 : r.backgroundColor) || t(1)[0], o.borderColor = (r == null ? void 0 : r.borderColor) || t(1)[0];
+import c from "./GenerateColors.js";
+const a = (r, e) => {
+  r.backgroundColor = e?.backgroundColor || c(1)[0], r.borderColor = e?.borderColor || c(1)[0];
 };
-function i(o) {
-  const r = {}, n = [];
-  return o.map((e) => {
-    Object.keys(e).map((c) => {
-      r[c] || (n.push(c), r[c] = !0);
+function s(r) {
+  const e = {}, t = [];
+  return r.map((n) => {
+    Object.keys(n).map((o) => {
+      e[o] || (t.push(o), e[o] = !0);
     });
-  }), n;
+  }), t;
 }
-function f(o) {
-  const r = {}, n = [];
-  return Object.values(o).map((e) => {
-    Object.keys(e).map((c) => {
-      r[c] || (n.push(c), r[c] = !0);
+function i(r) {
+  const e = {}, t = [];
+  return Object.values(r).map((n) => {
+    Object.keys(n).map((o) => {
+      e[o] || (t.push(o), e[o] = !0);
     });
-  }), n;
+  }), t;
 }
-function b(o, r, n) {
-  if (o instanceof Array) {
-    const e = r % o.length;
-    return o[e];
+function f(r, e, t) {
+  if (r instanceof Array) {
+    const n = e % r.length;
+    return r[n];
   } else
-    return o[n];
+    return r[t];
 }
 export {
   a as assignStyles,
-  f as extractNamedOptions,
-  i as extractOptions,
-  b as getStyle
+  i as extractNamedOptions,
+  s as extractOptions,
+  f as getStyle
 };

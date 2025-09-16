@@ -1,50 +1,50 @@
-import { NoopConverter as m } from "./base/NoopScaleConverter.js";
-function v(a) {
-  const t = (a == null ? void 0 : a.xLabel) || "name", n = (a == null ? void 0 : a.xKey) || "x", e = (a == null ? void 0 : a.yKey) || "y";
-  return e instanceof Array && console.error("ScatterChart: yKey should be string only, not an array " + a.yKey), {
+import { NoopConverter as f } from "./base/NoopScaleConverter.js";
+function m(a) {
+  const r = a?.xLabel || "name", n = a?.xKey || "x", t = a?.yKey || "y";
+  return t instanceof Array && console.error("ScatterChart: yKey should be string only, not an array " + a.yKey), {
     x: n,
-    y: e,
-    label: t
+    y: t,
+    label: r
   };
 }
-const b = (a) => {
-  const { x: t, y: n, label: e } = v(a);
-  return (c) => {
-    var l = {
+const v = (a) => {
+  const { x: r, y: n, label: t } = m(a);
+  return (l) => {
+    var o = {
       datasets: []
     };
-    if (c == null)
-      return l;
-    var s = {};
-    const x = a.metadata, f = x ? (r, u) => {
-      x.map((y) => {
-        r[y] = u[y];
+    if (l == null)
+      return o;
+    var u = {};
+    const c = a.metadata, d = c ? (e, y) => {
+      c.map((s) => {
+        e[s] = y[s];
       });
-    } : (r, u) => {
+    } : (e, y) => {
     };
-    return c.map((r, u) => {
-      var y = K(s, r[e]);
-      const d = {
-        x: r[t],
-        y: r[n]
+    return l.map((e, y) => {
+      var s = b(u, e[t]);
+      const x = {
+        x: e[r],
+        y: e[n]
       };
-      f(d, r), y.data.push(d);
-    }), Object.values(s).map((r) => {
-      l.datasets.push(r);
-    }), l;
+      d(x, e), s.data.push(x);
+    }), Object.values(u).map((e) => {
+      o.datasets.push(e);
+    }), o;
   };
-}, h = {
-  Array: b,
-  noop: m
+}, K = {
+  Array: v,
+  noop: f
 };
-function K(a, t, n) {
-  var e = a[t];
-  return e || (e = {
-    key: t,
-    label: t,
+function b(a, r, n) {
+  var t = a[r];
+  return t || (t = {
+    key: r,
+    label: r,
     data: []
-  }, a[t] = e, e);
+  }, a[r] = t, t);
 }
 export {
-  h as default
+  K as default
 };

@@ -1,65 +1,65 @@
-import { getAccessor as y } from "../../utils/accessor.js";
-function g(a) {
-  const t = (a == null ? void 0 : a.xLabel) || "name", c = (a == null ? void 0 : a.xKey) || "x", r = (a == null ? void 0 : a.yKey) || "y", l = a == null ? void 0 : a.group;
+import { getAccessor as b } from "../../utils/accessor.js";
+function v(e) {
+  const r = e?.xLabel || "name", n = e?.xKey || "x", t = e?.yKey || "y", u = e?.group;
   return {
-    x: y(c),
-    y: y(r),
-    group: y(l),
-    label: t
+    x: b(n),
+    y: b(t),
+    group: b(u),
+    label: r
   };
 }
-function m(a, t, c) {
-  var r = a[t];
-  return r || (r = {
-    key: t,
-    label: t,
+function y(e, r, n) {
+  var t = e[r];
+  return t || (t = {
+    key: r,
+    label: r,
     data: []
-  }, a[t] = r, r);
+  }, e[r] = t, t);
 }
-const K = (a) => {
-  const { x: t, y: c, group: r, label: l } = g(a);
-  return (s) => {
-    var u = {
+const d = (e) => {
+  const { x: r, y: n, group: t, label: u } = v(e);
+  return (c) => {
+    var s = {
       datasets: []
     };
-    if (s == null)
-      return u;
-    var n = {};
-    const x = r ? (e) => r.accessor(e) : () => l;
-    return s.map((e, d) => {
-      const b = x(e);
-      var v = m(n, b);
-      v.data.push({
-        x: t.accessor(e),
-        y: c.accessor(e)
+    if (c == null)
+      return s;
+    var l = {};
+    const o = t ? (a) => t.accessor(a) : () => u;
+    return c.map((a, g) => {
+      const p = o(a);
+      var x = y(l, p);
+      x.data.push({
+        x: r.accessor(a),
+        y: n.accessor(a)
       });
-    }), Object.values(n).map((e) => {
-      u.datasets.push(e);
-    }), u;
+    }), Object.values(l).map((a) => {
+      s.datasets.push(a);
+    }), s;
   };
-}, h = (a) => {
-  const { x: t, y: c, group: r, label: l } = g(a);
-  return (s) => {
-    var u = {
+}, f = (e) => {
+  const { x: r, y: n, group: t, label: u } = v(e);
+  return (c) => {
+    var s = {
       datasets: []
     };
-    if (s == null)
-      return u;
-    var n = {};
-    const x = r ? (e) => r.accessor(e) : () => l;
-    return Object.values(s).map((e, d) => {
-      const b = x(e);
-      var v = m(n, b);
-      v.data.push({
-        x: t.accessor(e),
-        y: c.accessor(e)
+    if (c == null)
+      return s;
+    var l = {};
+    const o = t ? (a) => t.accessor(a) : () => u;
+    return Object.values(c).map((a, g) => {
+      const p = o(a);
+      var x = y(l, p);
+      x.data.push({
+        x: r.accessor(a),
+        y: n.accessor(a)
       });
-    }), Object.values(n).map((e) => {
-      u.datasets.push(e);
-    }), u;
+    }), Object.values(l).map((a) => {
+      s.datasets.push(a);
+    }), s;
   };
 };
 export {
-  K as GroupArrayScaleConverter,
-  h as GroupObjectScaleConverter
+  d as GroupArrayScaleConverter,
+  f as GroupObjectScaleConverter
 };

@@ -1,42 +1,41 @@
-import { generateColor as v } from "../GenerateColors.js";
-import { getStyle as g, extractOptions as b, extractNamedOptions as h } from "../util.js";
-const A = (a, C) => {
-  function m(o, i, r) {
-    const c = r.length, e = b(r);
-    e.map((t) => {
-      o[t] = [];
-    }), o.data && o.data.map((t, p) => {
-      const s = p % c, n = r[s];
-      e.map((f) => {
-        o[f].push(n == null ? void 0 : n[f]);
+import { generateColor as y } from "../GenerateColors.js";
+import { getStyle as v, extractOptions as g, extractNamedOptions as b } from "../util.js";
+const A = (f, h) => {
+  function a(t, c, e) {
+    const s = e.length, r = g(e);
+    r.map((o) => {
+      t[o] = [];
+    }), t.data && t.data.map((o, l) => {
+      const i = l % s, n = e[i];
+      r.map((p) => {
+        t[p].push(n?.[p]);
       });
     });
   }
-  function l(o, i, r) {
-    const c = h(r);
-    c.map((e) => {
-      o[e] = [];
-    }), o.data && o.data.map((e, t) => {
-      const p = i.labels[t], s = r[p];
-      c.map((n) => {
-        (s == null ? void 0 : s[n]) != null ? o[n][t] = s == null ? void 0 : s[n] : n.includes("Color") && (o[n][t] = v());
+  function m(t, c, e) {
+    const s = b(e);
+    s.map((r) => {
+      t[r] = [];
+    }), t.data && t.data.map((r, o) => {
+      const l = c.labels[o], i = e[l];
+      s.map((n) => {
+        i?.[n] != null ? t[n][o] = i?.[n] : n.includes("Color") && (t[n][o] = y());
       });
     });
   }
-  function u(o, i) {
-    Object.keys(i).map((r) => {
-      o[r] = i[r];
+  function u(t, c) {
+    Object.keys(c).map((e) => {
+      t[e] = c[e];
     });
   }
-  return (o, i) => {
-    if (a == null || o == null || o == null)
-      return o;
-    if (o)
-      return o.datasets && o.datasets.map((r, c) => {
-        var p;
-        const e = g(a, c, (p = o.labels) == null ? void 0 : p[c]), t = e.style;
-        t instanceof Array ? m(r, o, t) : l(r, o, t), e.props && u(r, e.props);
-      }), o;
+  return (t, c) => {
+    if (f == null || t == null || t == null)
+      return t;
+    if (t)
+      return t.datasets && t.datasets.map((e, s) => {
+        const r = v(f, s, t.labels?.[s]), o = r.style;
+        o instanceof Array ? a(e, t, o) : m(e, t, o), r.props && u(e, r.props);
+      }), t;
   };
 };
 export {

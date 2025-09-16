@@ -1,49 +1,49 @@
-import { getAccessor as K } from "../utils/accessor.js";
-import { NoopConverter as g } from "./base/NoopScaleConverter.js";
-function v(a) {
-  const t = (a == null ? void 0 : a.xLabel) || "name", c = (a == null ? void 0 : a.xKey) || "x", e = (a == null ? void 0 : a.yKey) || "y";
-  return e instanceof Array && console.error("ScatterChart: yKey should be string only, not an array " + a.yKey), {
-    x: c,
-    y: e,
-    label: t
+import { getAccessor as x } from "../utils/accessor.js";
+import { NoopConverter as f } from "./base/NoopScaleConverter.js";
+function K(a) {
+  const r = a?.xLabel || "name", n = a?.xKey || "x", t = a?.yKey || "y";
+  return t instanceof Array && console.error("ScatterChart: yKey should be string only, not an array " + a.yKey), {
+    x: n,
+    y: t,
+    label: r
   };
 }
-const b = (a) => {
-  const { x: t, y: c } = v(a);
-  return (e) => {
-    var y = {
+const g = (a) => {
+  const { x: r, y: n } = K(a);
+  return (t) => {
+    var c = {
       datasets: []
-    }, u = {};
-    const m = K(a.group), l = a.metadata, x = l ? (r, s) => {
-      l.map((n) => {
-        r[n] = s[n];
+    }, y = {};
+    const d = x(a.group), u = a.metadata, m = u ? (e, o) => {
+      u.map((s) => {
+        e[s] = o[s];
       });
-    } : (r, s) => {
+    } : (e, o) => {
     };
-    return e.map((r, s) => {
-      const n = m.accessor(r);
-      var f = h(u, n);
-      const d = {
-        x: r[t],
-        y: r[c]
+    return t.map((e, o) => {
+      const s = d.accessor(e);
+      var p = v(y, s);
+      const l = {
+        x: e[r],
+        y: e[n]
       };
-      x(d, r), f.data.push(d);
-    }), Object.values(u).map((r) => {
-      y.datasets.push(r);
-    }), y;
+      m(l, e), p.data.push(l);
+    }), Object.values(y).map((e) => {
+      c.datasets.push(e);
+    }), c;
   };
-}, C = {
-  Array: b,
-  noop: g
+}, h = {
+  Array: g,
+  noop: f
 };
-function h(a, t, c) {
-  var e = a[t];
-  return e || (e = {
-    key: t,
-    label: t,
+function v(a, r, n) {
+  var t = a[r];
+  return t || (t = {
+    key: r,
+    label: r,
     data: []
-  }, a[t] = e, e);
+  }, a[r] = t, t);
 }
 export {
-  C as default
+  h as default
 };

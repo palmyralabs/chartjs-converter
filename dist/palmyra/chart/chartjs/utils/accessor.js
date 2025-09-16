@@ -1,71 +1,71 @@
-function l(e) {
-  const c = (e == null ? void 0 : e.xKey) || "name", r = (e == null ? void 0 : e.yKey) || "value", n = r instanceof Array ? r : [r];
+function K(e) {
+  const r = e?.xKey || "name", n = e?.yKey || "value", c = n instanceof Array ? n : [n];
   return {
-    xKey: a(c),
-    yKeys: t(n)
+    xKey: y(r),
+    yKeys: i(c)
   };
 }
-function x(e) {
-  const c = (e == null ? void 0 : e.xKey) || "name", r = (e == null ? void 0 : e.yKey) || "value", n = r instanceof Array ? r : [r], u = e.xKeyLabelMap ? (y) => e.xKeyLabelMap[y] || y : (y) => y;
+function b(e) {
+  const r = e?.xKey || "name", n = e?.yKey || "value", c = n instanceof Array ? n : [n], t = e.xKeyLabelMap ? (s) => e.xKeyLabelMap[s] || s : (s) => s;
   return {
-    xKey: a(c),
-    xLabelAccessor: u,
-    yKeys: t(n)
+    xKey: y(r),
+    xLabelAccessor: t,
+    yKeys: i(c)
   };
 }
-function t(e) {
-  return e.map(a);
+function i(e) {
+  return e.map(y);
 }
-function a(e) {
+function y(e) {
   if (e instanceof Function || typeof e == "function")
     return { accessor: e };
   if (e instanceof Object && e.accessor)
     return e;
   if (typeof e == "string") {
-    const c = e, r = b(c) ? (n) => K(c, n) : (n) => n[c];
+    const r = e, n = a(r) ? (c) => f(r, c) : (c) => c[r];
     return {
-      ref: c,
-      accessor: r
+      ref: r,
+      accessor: n
     };
   }
   throw console.error("Invalid attribute accessor", e), Error("Invalid Attribute Accessor  ");
 }
-function A(e) {
-  const c = (e == null ? void 0 : e.xLabel) || (e == null ? void 0 : e.xKey) || "name", r = (e == null ? void 0 : e.yLabel) || (e == null ? void 0 : e.yKey) || "value", n = r instanceof Array || typeof r == "object" ? r : [r];
+function l(e) {
+  const r = e?.xLabel || e?.xKey || "name", n = e?.yLabel || e?.yKey || "value", c = n instanceof Array || typeof n == "object" ? n : [n];
   return {
-    xLabel: c,
-    yLabels: n
+    xLabel: r,
+    yLabels: c
   };
 }
-const g = (e, c, r) => e instanceof Array ? e[r] || c : e[c] || c;
-function f(e) {
+const x = (e, r, n) => e instanceof Array ? e[n] || r : e[r] || r;
+function o(e) {
   return e && typeof e == "object" && !Array.isArray(e);
 }
-function s(e, ...c) {
-  if (!c.length) return e;
-  const r = c.shift();
-  if (f(e) && f(r))
-    for (const n in r)
-      f(r[n]) ? (e[n] || Object.assign(e, { [n]: {} }), s(e[n], r[n])) : Object.assign(e, { [n]: r[n] });
-  return s(e, ...c);
+function u(e, ...r) {
+  if (!r.length) return e;
+  const n = r.shift();
+  if (o(e) && o(n))
+    for (const c in n)
+      o(n[c]) ? (e[c] || Object.assign(e, { [c]: {} }), u(e[c], n[c])) : Object.assign(e, { [c]: n[c] });
+  return u(e, ...r);
 }
-const K = (e, c) => {
-  if (!(c === void 0 || c == null)) {
-    var r = e.indexOf(".");
-    if (r < 0)
-      return c[e];
-    var n = e.substring(0, r), u = e.substring(r + 1);
-    return K(u, c[n]);
+const f = (e, r) => {
+  if (!(r === void 0 || r == null)) {
+    var n = e.indexOf(".");
+    if (n < 0)
+      return r[e];
+    var c = e.substring(0, n), t = e.substring(n + 1);
+    return f(t, r[c]);
   }
-}, b = (e) => e.indexOf(".") >= 1;
+}, a = (e) => e.indexOf(".") >= 1;
 export {
-  x as generateAccessors,
-  a as getAccessor,
-  t as getAccessors,
-  l as getKeys,
-  g as getLabel,
-  A as getLabels,
-  K as getValueByKey,
-  f as isObject,
-  s as mergeDeep
+  b as generateAccessors,
+  y as getAccessor,
+  i as getAccessors,
+  K as getKeys,
+  x as getLabel,
+  l as getLabels,
+  f as getValueByKey,
+  o as isObject,
+  u as mergeDeep
 };
